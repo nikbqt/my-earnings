@@ -1,0 +1,10 @@
+{
+  "name": "Мой заработок",
+  "short_name": "Заработок",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10131a",
+  "theme_color": "#10131a",
+  "description": "Локальный трекер смен, кассы, расходов и месячной цели"
+}

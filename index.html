@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10131a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Мой заработок">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Мой заработок</title>
+<style>
+:root{color-scheme:dark;--bg:#10131a;--panel:#191e28;--panel2:#202735;--line:#2b3443;--text:#f4f6fb;--muted:#9aa6b8;--green:#35c982;--red:#ff7272;--blue:#8aaeff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}.app{max-width:720px;margin:auto;padding:18px 16px 40px}.top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 20px}.brand{font-size:24px;font-weight:800;letter-spacing:-.7px}.tag{font-size:11px;color:var(--green);background:#17382c;padding:6px 9px;border-radius:99px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}.label{font-size:12px;color:var(--muted);display:block;margin-bottom:7px}.field{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:13px;color:var(--text);outline:none}.field:focus{border-color:var(--blue)}.goalrow{display:flex;gap:12px;align-items:center}.goalrow .field{max-width:180px}.progresshead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.percent{font-size:27px;font-weight:800;color:var(--green)}.track{height:9px;background:#303847;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:20px;transition:width .2s}.sub{font-size:12px;color:var(--muted);margin-top:9px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:13px}.stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.stat strong{font-size:20px;letter-spacing:-.5px;overflow-wrap:anywhere}.section-title{font-size:16px;font-weight:750;margin:22px 2px 12px}.monthnav{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px}.monthnav strong{font-size:18px}.iconbtn{width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-size:20px}.week,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.week div{text-align:center;color:var(--muted);font-size:11px;padding:5px 0}.day{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-weight:650}.day.selected{outline:2px solid var(--blue)}.day.planned{background:#17382c;border-color:#245b44}.day.done{background:#214b3a;border-color:#347c5b}.day .dot{font-size:9px;color:#b5f4d2}.day.empty{visibility:hidden}.hint{color:var(--muted);font-size:12px;line-height:1.45}.shift{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.shift:last-child{border:0}.shift button{background:none;border:0;text-align:left;padding:0;flex:1}.pill{font-size:10px;padding:5px 8px;border-radius:99px;background:#303847;color:var(--muted)}.pill.done{background:#17382c;color:#8de6b9}.editor{margin-top:12px;background:var(--panel2);border-radius:14px;padding:14px}.editorgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.totalrow{display:flex;justify-content:space-between;align-items:center;margin:14px 0;font-weight:700}.primary,.secondary,.danger{border:0;border-radius:12px;padding:13px 15px;font-weight:700}.primary{background:var(--green);color:#082116}.secondary{background:var(--panel2);border:1px solid var(--line)}.danger{background:#48272b;color:#ffaaaa}.wide{width:100%}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.chart{display:flex;align-items:end;gap:5px;height:130px;padding:12px 0 0;border-bottom:1px solid var(--line)}.barwrap{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:5px}.bar{width:100%;max-width:26px;background:var(--blue);border-radius:5px 5px 0 0;min-height:2px}.barlabel{font-size:9px;color:var(--muted)}.backup textarea{min-height:110px;resize:vertical}.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px}.emptymsg{text-align:center;color:var(--muted);padding:20px 8px;font-size:13px}.bestrow{display:flex;justify-content:space-between;padding:8px 0;font-size:13px}.bestrow span{color:var(--muted)}.footer{text-align:center;color:#667184;font-size:11px;margin-top:26px}
+@media(min-width:600px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.app{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div class="brand">Мой заработок</div><div class="tag">ЛИЧНЫЙ ТРЕКЕР</div></header>
+  <section class="card">
+    <div class="goalrow">
+      <div style="flex:1"><label class="label" for="goal">Месячная цель, ₽</label><input class="field" id="goal" type="number" inputmode="numeric" min="0" step="1000"></div>
+      <div style="text-align:right"><div class="label">Осталось до цели</div><strong id="remaining" style="font-size:19px">0 ₽</strong></div>
+    </div>
+  </section>
+  <section class="card">
+    <div class="progresshead"><div><div class="label">Прогресс цели</div><strong id="netBig" style="font-size:23px">0 ₽</strong></div><div class="percent" id="percent">0%</div></div>
+    <div class="track"><div class="fill" id="progressFill" style="width:0%"></div></div>
+    <div class="sub" id="progressCaption">Чистый заработок относительно цели</div>
+  </section>
+  <div class="stats" id="stats"></div>
+  <div class="section-title">Календарь смен</div>
+  <div class="monthnav"><button class="iconbtn" id="prev" aria-label="Предыдущий месяц">‹</button><strong id="monthTitle"></strong><button class="iconbtn" id="next" aria-label="Следующий месяц">›</button></div>
+  <div class="week"><div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div></div>
+  <div class="calendar" id="calendar"></div>
+  <div class="hint" style="margin-top:10px">Нажми на дату, чтобы добавить смену. Повторное нажатие на запланированную дату открывает её карточку.</div>
+  <div id="editor"></div>
+  <div class="section-title">Статистика смен</div>
+  <section class="card">
+    <div id="bestStats"></div>
+    <div class="label" style="margin-top:12px">Чистый заработок по сменам</div>
+    <div class="chart" id="chart"></div>
+    <div id="chartEmpty" class="emptymsg">Внеси кассу хотя бы за одну смену, чтобы увидеть график.</div>
+  </section>
+  <div class="section-title">Резервная копия</div>
+  <section class="card backup">
+    <div class="actions"><button class="primary" id="export">Экспортировать данные</button><button class="secondary" id="import">Импортировать копию</button></div>
+    <label class="label" for="backupText" style="margin-top:14px">Текст резервной копии</label>
+    <textarea class="field" id="backupText" placeholder="Здесь появится копия или вставь сюда ранее сохранённый текст..."></textarea>
+    <div class="notice" id="backupNotice">Данные автоматически сохраняются в памяти Safari на этом iPhone. Резервная копия нужна на случай очистки данных сайта или смены устройства.</div>
+  </section>
+  <div class="footer">Работает локально на устройстве · Без аккаунта и сервера</div>
+</div>
+<script>
+const KEY='my-earnings-pwa-v1';
+const monthNames=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const fmt=n=>Math.round(Number(n)||0).toLocaleString('ru-RU')+' ₽';
+let state={goal:300000,month:new Date().toISOString().slice(0,7),records:{},selected:null};
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.records)state={...state,...s}}catch(e){}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function keyDate(y,m,d){return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
+function monthRecords(){return Object.entries(state.records).filter(([k])=>k.startsWith(state.month)).sort(([a],[b])=>a.localeCompare(b))}
+function metrics(){const rows=monthRecords(),done=rows.filter(([k,v])=>v.cash!==undefined);const cash=done.reduce((s,[k,v])=>s+num(v.cash),0),expenses=done.reduce((s,[k,v])=>s+num(v.expense),0),net=cash-expenses,avg=done.length?net/done.length:0;return {rows,done,cash,expenses,net,avg,planned:rows.length,remainingShifts:rows.length-done.length,forecast:done.length?avg*rows.length:0}}
+function num(v){return Number(v)||0}
+function planFor(date){const rows=monthRecords();let earned=0;for(const [k,v] of rows){if(k<date&&v.cash!==undefined)earned+=num(v.cash)-num(v.expense)}const future=rows.filter(([k,v])=>k>=date&&v.cash===undefined).length;return future?Math.floor((num(state.goal)-earned)/future):0}
+function render(){
+ document.getElementById('goal').value=state.goal;
+ const [y,m]=state.month.split('-').map(Number), M=metrics(), percent=state.goal?Math.max(0,Math.min(100,M.net/state.goal*100)):0;
+ document.getElementById('monthTitle').textContent=monthNames[m-1]+' '+y;
+ document.getElementById('netBig').textContent=fmt(M.net);
+ document.getElementById('percent').textContent=percent.toFixed(1)+'%';
+ document.getElementById('progressFill').style.width=percent+'%';
+ document.getElementById('progressCaption').textContent=`Касса ${fmt(M.cash)} · Расходы ${fmt(M.expenses)}`;
+ document.getElementById('remaining').textContent=fmt(num(state.goal)-M.net);
+ const statItems=[['Касса',M.cash],['Расходы',M.expenses],['Чистыми',M.net],['Среднее за смену',M.avg],['Прогноз месяца',M.forecast],['Смен завершено',`${M.done.length} / ${M.planned}`]];
+ document.getElementById('stats').innerHTML=statItems.map(([a,b])=>`<div class="stat"><small>${a}</small><strong>${typeof b==='string'?b:fmt(b)}</strong></div>`).join('');
+ const first=(new Date(y,m-1,1).getDay()+6)%7, count=new Date(y,m,0).getDate(), cal=document.getElementById('calendar');cal.innerHTML='';
+ for(let i=0;i<first;i++){const e=document.createElement('div');e.className='day empty';cal.append(e)}
+ for(let d=1;d<=count;d++){const date=keyDate(y,m,d),rec=state.records[date],btn=document.createElement('button');btn.className='day'+(rec?' planned':'')+(rec&&rec.cash!==undefined?' done':'')+(state.selected===date?' selected':'');btn.innerHTML=`<span>${d}</span>${rec?`<span class="dot">${rec.cash!==undefined?'✓':'●'}</span>`:''}`;btn.onclick=()=>toggleDate(date);cal.append(btn)}
+ renderEditor();renderStats(M);
+}
+function toggleDate(date){if(state.records[date]){state.selected=state.selected===date?null:date}else{state.records[date]={};state.selected=date}save();render()}
+function renderEditor(){const root=document.getElementById('editor');if(!state.selected||!state.records[state.selected]){root.innerHTML='';return}const date=state.selected,rec=state.records[date],[y,m,d]=date.split('-').map(Number),net=num(rec.cash)-num(rec.expense);
+ root.innerHTML=`<section class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><strong>Смена ${String(d).padStart(2,'0')}.${String(m).padStart(2,'0')}</strong><span class="pill ${rec.cash!==undefined?'done':''}">${rec.cash!==undefined?'Завершена':'Запланирована'}</span></div><div class="bestrow"><span>План на день</span><strong>${fmt(planFor(date))}</strong></div><div class="editor"><div class="editorgrid"><div><label class="label">Касса, ₽</label><input class="field" id="cashInput" type="number" inputmode="decimal" placeholder="0" value="${rec.cash??''}"></div><div><label class="label">Расходы, ₽</label><input class="field" id="expenseInput" type="number" inputmode="decimal" placeholder="0" value="${rec.expense??''}"></div></div><div class="totalrow"><span>Итого чистыми</span><strong id="dayNet">${fmt(net)}</strong></div><div class="actions"><button class="primary" id="saveShift">Сохранить смену</button><button class="danger" id="deleteShift">Удалить смену</button></div></div></section>`;
+ const cash=document.getElementById('cashInput'),exp=document.getElementById('expenseInput');function updateNet(){document.getElementById('dayNet').textContent=fmt(num(cash.value)-num(exp.value))}cash.oninput=exp.oninput=updateNet;
+ document.getElementById('saveShift').onclick=()=>{const c=cash.value.trim(),e=exp.value.trim();if(c===''){delete rec.cash}else{rec.cash=c}if(e===''){delete rec.expense}else{rec.expense=e}state.records[date]=rec;save();render()};
+ document.getElementById('deleteShift').onclick=()=>{delete state.records[date];state.selected=null;save();render()};
+}
+function renderStats(M){const best=[...M.done].sort((a,b)=>(num(b[1].cash)-num(b[1].expense))-(num(a[1].cash)-num(a[1].expense)))[0],worst=[...M.done].sort((a,b)=>(num(a[1].cash)-num(a[1].expense))-(num(b[1].cash)-num(b[1].expense)))[0];const root=document.getElementById('bestStats');root.innerHTML=M.done.length?`<div class="bestrow"><span>Лучшая смена</span><strong>${best[0].slice(-2)} число · ${fmt(num(best[1].cash)-num(best[1].expense))}</strong></div><div class="bestrow"><span>Слабейшая смена</span><strong>${worst[0].slice(-2)} число · ${fmt(num(worst[1].cash)-num(worst[1].expense))}</strong></div>`:'<div class="emptymsg">Пока нет завершённых смен.</div>';
+ const chart=document.getElementById('chart'),empty=document.getElementById('chartEmpty');chart.innerHTML='';empty.style.display=M.done.length?'none':'block';if(!M.done.length)return;const vals=M.done.map(([k,v])=>({day:k.slice(-2),v:num(v.cash)-num(v.expense)})),max=Math.max(1,...vals.map(x=>Math.max(0,x.v)));for(const x of vals){const w=document.createElement('div');w.className='barwrap';const b=document.createElement('div');b.className='bar';b.style.height=Math.max(3,Math.max(0,x.v)/max*100)+'%';b.title=fmt(x.v);const l=document.createElement('div');l.className='barlabel';l.textContent=x.day;w.append(b,l);chart.append(w)}}
+document.getElementById('goal').addEventListener('change',e=>{state.goal=Math.max(0,num(e.target.value));save();render()});
+document.getElementById('prev').onclick=()=>shiftMonth(-1);document.getElementById('next').onclick=()=>shiftMonth(1);
+function shiftMonth(delta){const [y,m]=state.month.split('-').map(Number),d=new Date(y,m-1+delta,1);state.month=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;state.selected=null;save();render()}
+document.getElementById('export').onclick=()=>{const data=JSON.stringify({app:'my-earnings-pwa',version:1,...state});document.getElementById('backupText').value=data;const notice=document.getElementById('backupNotice');if(navigator.clipboard?.writeText){navigator.clipboard.writeText(data).then(()=>notice.textContent='Копия сформирована и скопирована. Сохрани её в заметках или файле.').catch(()=>notice.textContent='Копия сформирована в поле выше. Выдели и скопируй её вручную.')}else notice.textContent='Копия сформирована в поле выше. Выдели и скопируй её вручную.'};
+document.getElementById('import').onclick=()=>{try{const d=JSON.parse(document.getElementById('backupText').value);if(d.app!=='my-earnings-pwa'||d.version!==1||!d.records||typeof d.records!=='object')throw 0;state={goal:d.goal??300000,month:d.month??state.month,records:d.records,selected:null};save();render();document.getElementById('backupNotice').textContent='Данные успешно восстановлены.'}catch(e){document.getElementById('backupNotice').textContent='Не получилось прочитать копию. Проверь, что вставлен полный JSON-файл.'}};
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+load();render();
+</script>
+</body></html>
